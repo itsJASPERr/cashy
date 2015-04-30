@@ -7,10 +7,19 @@
  * If everything works, it will create the database and tables.
  * 
  */
+
+$page = "start";
+if (isset($_GET["p"])) {
+    $page = $_GET["p"];
+}
+$filename = $page . ".php";
 ?>
 
 <html>
     <head>
+        
+        <title>Cashy Installation</title>
+        
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
@@ -20,11 +29,17 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="bootstrap/js/bootstrap.min.js"></script>
     </head>
-
     <body>
-        Hello Installation.
-        
-        <a class="btn btn-primary" href="formDb.php">Ready to install?</a>
+
+        <div class="container">
+
+            <?php
+            if (file_exists($filename)) {
+                include_once $page . ".php";
+            }
+            ?>
+
+        </div>
     </body>
 
 </html>
