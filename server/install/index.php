@@ -2,14 +2,22 @@
 
 /* 
  * @author Jasper Meyer, 30.04.2015
- * Installation file.
- * This script will initialize:
- *   - necessary database tables
- *   -
+ * Installation index file that leads through an installation process.
+ * 
+ * Need to insert all database infos, checks connection and rights.
+ * If everything works, it will create the database and tables.
+ * 
  */
 
-include '../_cfg.php';
-
-$create_db_query = "CREATE DATABASE $db_name"; 
-
 ?>
+
+<html>
+    <head>
+        
+    </head>
+    
+    <body>
+        Hello Installation.
+    </body>
+    
+</html>
