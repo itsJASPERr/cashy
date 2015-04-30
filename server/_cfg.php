@@ -4,7 +4,7 @@
  * database configuration file.
  */
 
-$db_host = ""; //hostname
+$db_host = "localhost:3306"; //hostname
 $db_user = ""; // username
 $db_password = ""; // password
 $db_name = ""; //database name
