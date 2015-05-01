@@ -5,22 +5,24 @@
  * Db creation file. Will create database and tables.
  */
 
-include '../_cfg.php';
-
-$dbCreateQuery = "CREATE DATABASE IF NOT EXISTS $db_name";
+$dbCreateQuery = "CREATE DATABASE " . $db . ";";
 
 $expensesCreateQuery = "CREATE TABLE expenses"
         . "("
-        . "id mediumint NOT NULL AUTO_INCREMENT, "
-        . "date date NOT NULL DEFAULT GETDATE(), "
-        . "c_id medium int, "
-        . "PRIMARY KEY (id),"
-        . "FOREIGN KEY (c_id) REFERENCES categories(id)"
+        . "id bigint NOT NULL AUTO_INCREMENT, "
+        . "date DATETIME NOT NULL, "
+        . "c_id bigint, "
+        . "u_id bigint, "
+        . "l_id bigint, "
+        . "PRIMARY KEY (id), "
+        . "FOREIGN KEY (c_id) REFERENCES categories(id), "
+        . "FOREIGN KEY (u_id) REFERENCES users(id), "
+        . "FOREIGN KEY (l_id) REFERENCES locations(id)"
         . ")";
 
 $categoriesCreateQuery = "CREATE TABLE categories"
         . "("
-        . "id mediumint NOT NULL AUTO_INCREMENT, "
+        . "id bigint NOT NULL AUTO_INCREMENT, "
         . "name varchar(50) NOT NULL, "
         . "description varchar(255), "
         . "PRIMARY KEY (id)"
@@ -28,7 +30,16 @@ $categoriesCreateQuery = "CREATE TABLE categories"
 
 $locationsCreateQuery = "CREATE TABLE locations"
         . "("
-        . "id mediumint NOT NULL AUTO_INCREMENT, "
+        . "id bigint NOT NULL AUTO_INCREMENT, "
+        . "name varchar(50) NOT NULL, "
+        . "PRIMARY KEY (id)"
+        . ")";
+
+$usersCreateQuery = "CREATE TABLE users"
+        . "("
+        . "id bigint NOT NULL AUTO_INCREMENT, "
+        . "name varchar(30) NOT NULL,"
+        . "password varchar(255) NOT NULL, "
         . "PRIMARY KEY (id)"
         . ")";
 
